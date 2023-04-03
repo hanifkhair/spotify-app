@@ -8,8 +8,8 @@ function HomePage() {
     <>
       <Navbar />
       <Sidebar />
-      <MainPage />
       <Playbar />
+      <MainPage />
     </>
   );
 }

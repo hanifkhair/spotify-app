@@ -21,8 +21,17 @@ import { color } from "framer-motion";
 export default function Sidebar() {
   return (
     <>
-      <Box id="sidebox">
-        <Box
+      <Box
+        className="bigbox font-face-gm"
+        bg="#101010"
+        w="241px"
+        maxH="100vh"
+        h="100%"
+        color={"#b3b3b3"}
+        position={"fixed"}
+        zIndex={"2"}
+      >
+        <Flex
           className="bigbox font-face-gm"
           bg="#101010"
           w="241px"
