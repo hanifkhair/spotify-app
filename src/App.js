@@ -1,8 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
+import Sidebar from "./pages/sidebar";
 
 function App() {
-  return <></>;
+  return <Sidebar />;
 }
 
 export default App;
