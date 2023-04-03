@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter, Routes } from "react-router-dom";
+import "./fonts/CircularStd-Book.ttf";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
