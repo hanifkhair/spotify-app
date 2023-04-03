@@ -1,8 +1,10 @@
-import logo from "./logo.svg";
+//import logo from "./logo.svg";
 import "./App.css";
+//import Navbar from "./components/navbar";
+import HomePage from "./pages/HomePage";
 
 function App() {
-  return <></>;
+	return <HomePage />;
 }
 
 export default App;
