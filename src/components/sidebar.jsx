@@ -303,7 +303,7 @@ export default function Sidebar() {
             </Flex>
           </a>
         </Container> */}
-        </Box>
+        </Flex>
       </Box>
     </>
   );
