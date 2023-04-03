@@ -63,7 +63,7 @@ export default function MainPage() {
         <Box
           marginLeft={"241px"}
           height={"100%"}
-          padding={"24px 32px 0px 32px  "}
+          padding={"80px 32px 0px 32px  "}
         >
           <Flex
             height={"350px"}
@@ -132,7 +132,7 @@ export default function MainPage() {
               // padding={"20px"}
               overflowX={"hidden"}
               position={"relative"}
-              zIndex={"3"}
+              // zIndex={"3"}
             >
               {data.map((val) => (
                 <Card url={val.url} judul={val.judul} desc={val.desc} />

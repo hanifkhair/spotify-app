@@ -6,9 +6,10 @@ import Sidebar from "../components/sidebar";
 function HomePage() {
   return (
     <>
+      <Navbar />
+
       <Sidebar />
       <MainPage />
-      <Navbar />
       <Playbar />
     </>
   );
