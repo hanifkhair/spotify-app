@@ -7,10 +7,9 @@ function HomePage() {
   return (
     <>
       <Navbar />
-
       <Sidebar />
-      <MainPage />
       <Playbar />
+      <MainPage />
     </>
   );
 }

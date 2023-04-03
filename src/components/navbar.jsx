@@ -12,11 +12,12 @@ export default function Navbar() {
         paddingRight={"20px"}
         alignItems={"center"}
         top={0}
-        pos="absolute"
+        pos="fixed"
         height={"64px"}
         display={"flex"}
         justifyContent={"space-between"}
         bgColor={"black"}
+        zIndex={"1"}
       >
         <Box>
           <ButtonGroup color={"black"}>

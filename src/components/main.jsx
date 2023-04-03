@@ -57,9 +57,9 @@ export default function MainPage() {
       bgColor="#121212"
       height="100vh"
       maxWidth="100%"
-      // maxHeight="100vh"
+      maxHeight="100vh"
     >
-      <Box className="gradient">
+      <Box height="322px" className="gradient">
         <Box
           marginLeft={"241px"}
           height={"100%"}
@@ -94,7 +94,7 @@ export default function MainPage() {
               gap={"25px"}
               // padding={"20px"}
               overflowX={"hidden"}
-              zIndex={"3"}
+              // zIndex={"3"}
               position={"relative"}
             >
               {data.map((val) => (
