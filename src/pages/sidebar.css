@@ -1,6 +1,6 @@
 .bigbox {
   padding-top: 24px;
-  padding-bottom: 90px;
+  /* padding-bottom: 90px; */
 }
 #logo {
   max-width: 100%;
@@ -14,9 +14,16 @@
 }
 
 .scrollbox-sidebar {
-  overflow-y: hidden;
+  overflow: hidden;
+  height: 100%;
 }
 
+/* .scrollbox-sidebar::-webkit-scrollbar {
+  display: none;
+} */
+
 .scrollbox-sidebar:hover {
+  /* display: block; */
+  /* background-color: blue; */
   overflow-y: scroll;
 }

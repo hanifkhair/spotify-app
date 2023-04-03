@@ -55,11 +55,11 @@ export default function MainPage() {
     <Box
       width="200vw"
       bgColor="#121212"
-      height="200vh"
+      height="100vh"
       maxWidth="100%"
-      maxHeight="100%"
+      // maxHeight="100vh"
     >
-      <Box height={"322px"} width={"100%"} className="gradient">
+      <Box className="gradient">
         <Box
           marginLeft={"241px"}
           height={"100%"}

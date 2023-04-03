@@ -25,15 +25,18 @@ export default function Sidebar() {
         className="bigbox font-face-gm"
         bg="#101010"
         w="241px"
-        h="100vh"
+        maxH="100vh"
+        h="100%"
         color={"#b3b3b3"}
+        position={"absolute"}
       >
-        <Box
+        <Flex
           className="bigbox font-face-gm"
           bg="#101010"
           w="241px"
           h="100%"
           color={"#b3b3b3"}
+          flexDir={"column"}
         >
           <Container margin={"0 0 18px"}>
             <a href="#">
@@ -124,10 +127,11 @@ export default function Sidebar() {
             </a>
           </Container>
           <hr className="hr-sidebar" />
+
           <Box
             className="scrollbox-sidebar"
             w={"100%"}
-            h={"100%"}
+            // h={"100%"}
             padding={"10px 16px"}
           >
             <Flex
@@ -274,8 +278,8 @@ export default function Sidebar() {
               </a>
             </Flex>
           </Box>
-        </Box>
-        <Container>
+        </Flex>
+        {/* <Container>
           <a href="#">
             <Flex>
               <IconButton
@@ -288,7 +292,7 @@ export default function Sidebar() {
               <div>Install App</div>
             </Flex>
           </a>
-        </Container>
+        </Container> */}
       </Box>
     </>
   );
