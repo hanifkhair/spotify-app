@@ -28,7 +28,8 @@ export default function Sidebar() {
         maxH="100vh"
         h="100%"
         color={"#b3b3b3"}
-        position={"absolute"}
+        position={"fixed"}
+        zIndex={"2"}
       >
         <Flex
           className="bigbox font-face-gm"
