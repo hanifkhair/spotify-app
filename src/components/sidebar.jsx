@@ -21,265 +21,266 @@ import { color } from "framer-motion";
 export default function Sidebar() {
   return (
     <>
-      <Box
-        className="bigbox font-face-gm"
-        bg="#101010"
-        w="241px"
-        maxH="100vh"
-        h="100%"
-        color={"#b3b3b3"}
-        position={"absolute"}
-      >
-        <Flex
+      <Box id="sidebox">
+        <Box
           className="bigbox font-face-gm"
           bg="#101010"
           w="241px"
+          maxH="100vh"
           h="100%"
           color={"#b3b3b3"}
-          flexDir={"column"}
+          position={"absolute"}
         >
-          <Container margin={"0 0 18px"}>
-            <a href="#">
-              <Flex>
-                <Image
-                  id="logo"
-                  objectFit="cover"
-                  src={logo}
-                  alt="logo"
-                ></Image>
-              </Flex>
-            </a>
-          </Container>
-          <Container margin={"0 0 18px"}>
-            <a href="#">
-              <Flex p={"8px 0"} _hover={{ color: "white" }}>
-                <IconButton
-                  variant="link"
-                  as={AiFillHome}
-                  color={"#b3b3b3"}
-                  w={"19.99"}
-                  h={"20.88"}
-                  cursor={"pointer"}
-                  _hover={{ color: "white" }}
-                ></IconButton>
-                <Center>Home</Center>
-              </Flex>
-            </a>
-
-            <a href="">
-              <Flex p={"8px 0"} _hover={{ color: "white" }}>
-                <IconButton
-                  variant="link"
-                  as={FiSearch}
-                  color={"#b3b3b3"}
-                  w={"19.99"}
-                  h={"20.88"}
-                  cursor={"pointer"}
-                  _hover={{ color: "white" }}
-                ></IconButton>
-                <Center>Seacrh</Center>
-              </Flex>
-            </a>
-
-            <a href="">
-              <Flex p={"8px 0"} _hover={{ color: "white" }}>
-                <IconButton
-                  variant="link"
-                  as={VscLibrary}
-                  color={"#b3b3b3"}
-                  w={"19.99"}
-                  h={"20.88"}
-                  cursor={"pointer"}
-                  _hover={{ color: "white" }}
-                ></IconButton>
-                <Center>Library</Center>
-              </Flex>
-            </a>
-          </Container>
-          <Container>
-            <a href="#">
-              <Flex p={"8px 0"} _hover={{ color: "white" }}>
-                <IconButton
-                  variant="link"
-                  as={MdAddBox}
-                  color={"#b3b3b3"}
-                  w={"19.99"}
-                  h={"20.88"}
-                  cursor={"pointer"}
-                  _hover={{ color: "white" }}
-                ></IconButton>
-                <Center>Create Playlist</Center>
-              </Flex>
-            </a>
-            <a href="#">
-              <Flex p={"8px 0"} _hover={{ color: "white" }}>
-                <IconButton
-                  variant="link"
-                  as={FcLike}
-                  color={"#b3b3b3"}
-                  w={"19.99"}
-                  h={"20.88"}
-                  cursor={"pointer"}
-                  _hover={{ color: "white" }}
-                ></IconButton>
-                <Center>Liked Songs</Center>
-              </Flex>
-            </a>
-          </Container>
-          <hr className="hr-sidebar" />
-
-          <Box
-            className="scrollbox-sidebar"
-            w={"100%"}
-            // h={"100%"}
-            padding={"10px 16px"}
+          <Flex
+            className="bigbox font-face-gm"
+            bg="#101010"
+            w="241px"
+            h="100%"
+            color={"#b3b3b3"}
+            flexDir={"column"}
           >
-            <Flex
-              w={"241"}
-              h={"32px"}
-              padding={"0 10px"}
-              alignItems={"center"}
-              _hover={{ color: "white" }}
-            >
-              <a href="">
-                <span>song title</span>
+            <Container margin={"0 0 18px"}>
+              <a href="#">
+                <Flex>
+                  <Image
+                    id="logo"
+                    objectFit="cover"
+                    src={logo}
+                    alt="logo"
+                  ></Image>
+                </Flex>
               </a>
-            </Flex>
-            <Flex
-              w={"241"}
-              h={"32px"}
-              padding={"0 10px"}
-              alignItems={"center"}
-              _hover={{ color: "white" }}
-            >
-              <a href="">
-                <span>song title</span>
+            </Container>
+            <Container margin={"0 0 18px"}>
+              <a href="#">
+                <Flex p={"8px 0"} _hover={{ color: "white" }}>
+                  <IconButton
+                    variant="link"
+                    as={AiFillHome}
+                    color={"#b3b3b3"}
+                    w={"19.99"}
+                    h={"20.88"}
+                    cursor={"pointer"}
+                    _hover={{ color: "white" }}
+                  ></IconButton>
+                  <Center>Home</Center>
+                </Flex>
               </a>
-            </Flex>
-            <Flex
-              w={"241"}
-              h={"32px"}
-              padding={"0 10px"}
-              alignItems={"center"}
-              _hover={{ color: "white" }}
-            >
+
               <a href="">
-                <span>song title</span>
+                <Flex p={"8px 0"} _hover={{ color: "white" }}>
+                  <IconButton
+                    variant="link"
+                    as={FiSearch}
+                    color={"#b3b3b3"}
+                    w={"19.99"}
+                    h={"20.88"}
+                    cursor={"pointer"}
+                    _hover={{ color: "white" }}
+                  ></IconButton>
+                  <Center>Seacrh</Center>
+                </Flex>
               </a>
-            </Flex>
-            <Flex
-              w={"241"}
-              h={"32px"}
-              padding={"0 10px"}
-              alignItems={"center"}
-              _hover={{ color: "white" }}
-            >
+
               <a href="">
-                <span>song title</span>
+                <Flex p={"8px 0"} _hover={{ color: "white" }}>
+                  <IconButton
+                    variant="link"
+                    as={VscLibrary}
+                    color={"#b3b3b3"}
+                    w={"19.99"}
+                    h={"20.88"}
+                    cursor={"pointer"}
+                    _hover={{ color: "white" }}
+                  ></IconButton>
+                  <Center>Library</Center>
+                </Flex>
               </a>
-            </Flex>
-            <Flex
-              w={"241"}
-              h={"32px"}
-              padding={"0 10px"}
-              alignItems={"center"}
-              _hover={{ color: "white" }}
+            </Container>
+            <Container>
+              <a href="#">
+                <Flex p={"8px 0"} _hover={{ color: "white" }}>
+                  <IconButton
+                    variant="link"
+                    as={MdAddBox}
+                    color={"#b3b3b3"}
+                    w={"19.99"}
+                    h={"20.88"}
+                    cursor={"pointer"}
+                    _hover={{ color: "white" }}
+                  ></IconButton>
+                  <Center>Create Playlist</Center>
+                </Flex>
+              </a>
+              <a href="#">
+                <Flex p={"8px 0"} _hover={{ color: "white" }}>
+                  <IconButton
+                    variant="link"
+                    as={FcLike}
+                    color={"#b3b3b3"}
+                    w={"19.99"}
+                    h={"20.88"}
+                    cursor={"pointer"}
+                    _hover={{ color: "white" }}
+                  ></IconButton>
+                  <Center>Liked Songs</Center>
+                </Flex>
+              </a>
+            </Container>
+            <hr className="hr-sidebar" />
+
+            <Box
+              className="scrollbox-sidebar"
+              w={"100%"}
+              // h={"100%"}
+              padding={"10px 16px"}
             >
-              <a href="">
-                <span>song title</span>
-              </a>
-            </Flex>
-            <Flex
-              w={"241"}
-              h={"32px"}
-              padding={"0 10px"}
-              alignItems={"center"}
-              _hover={{ color: "white" }}
-            >
-              <a href="">
-                <span>song title</span>
-              </a>
-            </Flex>
-            <Flex
-              w={"241"}
-              h={"32px"}
-              padding={"0 10px"}
-              alignItems={"center"}
-              _hover={{ color: "white" }}
-            >
-              <a href="">
-                <span>song title</span>
-              </a>
-            </Flex>
-            <Flex
-              w={"241"}
-              h={"32px"}
-              padding={"0 10px"}
-              alignItems={"center"}
-              _hover={{ color: "white" }}
-            >
-              <a href="">
-                <span>song title</span>
-              </a>
-            </Flex>
-            <Flex
-              w={"241"}
-              h={"32px"}
-              padding={"0 10px"}
-              alignItems={"center"}
-              _hover={{ color: "white" }}
-            >
-              <a href="">
-                <span>song title</span>
-              </a>
-            </Flex>
-            <Flex
-              w={"241"}
-              h={"32px"}
-              padding={"0 10px"}
-              alignItems={"center"}
-              _hover={{ color: "white" }}
-            >
-              <a href="">
-                <span>song title</span>
-              </a>
-            </Flex>
-            <Flex
-              w={"241"}
-              h={"32px"}
-              padding={"0 10px"}
-              alignItems={"center"}
-              _hover={{ color: "white" }}
-            >
-              <a href="">
-                <span>song title</span>
-              </a>
-            </Flex>
-            <Flex
-              w={"241"}
-              h={"32px"}
-              padding={"0 10px"}
-              alignItems={"center"}
-              _hover={{ color: "white" }}
-            >
-              <a href="">
-                <span>song title</span>
-              </a>
-            </Flex>
-            <Flex
-              w={"241"}
-              h={"32px"}
-              padding={"0 10px"}
-              alignItems={"center"}
-              _hover={{ color: "white" }}
-            >
-              <a href="">
-                <span>song title</span>
-              </a>
-            </Flex>
-          </Box>
-        </Flex>
-        {/* <Container>
+              <Flex
+                w={"241"}
+                h={"32px"}
+                padding={"0 10px"}
+                alignItems={"center"}
+                _hover={{ color: "white" }}
+              >
+                <a href="">
+                  <span>song title</span>
+                </a>
+              </Flex>
+              <Flex
+                w={"241"}
+                h={"32px"}
+                padding={"0 10px"}
+                alignItems={"center"}
+                _hover={{ color: "white" }}
+              >
+                <a href="">
+                  <span>song title</span>
+                </a>
+              </Flex>
+              <Flex
+                w={"241"}
+                h={"32px"}
+                padding={"0 10px"}
+                alignItems={"center"}
+                _hover={{ color: "white" }}
+              >
+                <a href="">
+                  <span>song title</span>
+                </a>
+              </Flex>
+              <Flex
+                w={"241"}
+                h={"32px"}
+                padding={"0 10px"}
+                alignItems={"center"}
+                _hover={{ color: "white" }}
+              >
+                <a href="">
+                  <span>song title</span>
+                </a>
+              </Flex>
+              <Flex
+                w={"241"}
+                h={"32px"}
+                padding={"0 10px"}
+                alignItems={"center"}
+                _hover={{ color: "white" }}
+              >
+                <a href="">
+                  <span>song title</span>
+                </a>
+              </Flex>
+              <Flex
+                w={"241"}
+                h={"32px"}
+                padding={"0 10px"}
+                alignItems={"center"}
+                _hover={{ color: "white" }}
+              >
+                <a href="">
+                  <span>song title</span>
+                </a>
+              </Flex>
+              <Flex
+                w={"241"}
+                h={"32px"}
+                padding={"0 10px"}
+                alignItems={"center"}
+                _hover={{ color: "white" }}
+              >
+                <a href="">
+                  <span>song title</span>
+                </a>
+              </Flex>
+              <Flex
+                w={"241"}
+                h={"32px"}
+                padding={"0 10px"}
+                alignItems={"center"}
+                _hover={{ color: "white" }}
+              >
+                <a href="">
+                  <span>song title</span>
+                </a>
+              </Flex>
+              <Flex
+                w={"241"}
+                h={"32px"}
+                padding={"0 10px"}
+                alignItems={"center"}
+                _hover={{ color: "white" }}
+              >
+                <a href="">
+                  <span>song title</span>
+                </a>
+              </Flex>
+              <Flex
+                w={"241"}
+                h={"32px"}
+                padding={"0 10px"}
+                alignItems={"center"}
+                _hover={{ color: "white" }}
+              >
+                <a href="">
+                  <span>song title</span>
+                </a>
+              </Flex>
+              <Flex
+                w={"241"}
+                h={"32px"}
+                padding={"0 10px"}
+                alignItems={"center"}
+                _hover={{ color: "white" }}
+              >
+                <a href="">
+                  <span>song title</span>
+                </a>
+              </Flex>
+              <Flex
+                w={"241"}
+                h={"32px"}
+                padding={"0 10px"}
+                alignItems={"center"}
+                _hover={{ color: "white" }}
+              >
+                <a href="">
+                  <span>song title</span>
+                </a>
+              </Flex>
+              <Flex
+                w={"241"}
+                h={"32px"}
+                padding={"0 10px"}
+                alignItems={"center"}
+                _hover={{ color: "white" }}
+              >
+                <a href="">
+                  <span>song title</span>
+                </a>
+              </Flex>
+            </Box>
+          </Flex>
+          {/* <Container>
           <a href="#">
             <Flex>
               <IconButton
@@ -293,6 +294,7 @@ export default function Sidebar() {
             </Flex>
           </a>
         </Container> */}
+        </Box>
       </Box>
     </>
   );
