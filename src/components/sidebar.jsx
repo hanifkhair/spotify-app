@@ -1,5 +1,5 @@
 import "./sidebar.css";
-import logo from "../assets/logo-white.png";
+import logo from "../assets/logo-white.svg";
 import {
   Box,
   IconButton,
@@ -22,7 +22,7 @@ export default function Sidebar() {
   return (
     <>
       <Box
-        className="bigbox font-face-gm"
+        className="bigbox"
         bg="#101010"
         w="241px"
         maxH="100vh"
@@ -31,20 +31,11 @@ export default function Sidebar() {
         position={"fixed"}
         zIndex={"2"}
       >
-        <Flex
-          className="bigbox font-face-gm"
-          bg="#101010"
-          w="241px"
-          maxH="100vh"
-          h="100%"
-          color={"#b3b3b3"}
-          position={"absolute"}
-        >
+        <Flex bg="#101010" w="241px" maxH="100vh" h="100%" color={"#b3b3b3"}>
           <Flex
-            className="bigbox font-face-gm"
             bg="#101010"
             w="241px"
-            h="100%"
+            maxH="100%"
             color={"#b3b3b3"}
             flexDir={"column"}
           >
@@ -67,12 +58,12 @@ export default function Sidebar() {
                     variant="link"
                     as={AiFillHome}
                     color={"#b3b3b3"}
-                    w={"19.99"}
-                    h={"20.88"}
+                    w={"24px"}
+                    h={"24px"}
                     cursor={"pointer"}
                     _hover={{ color: "white" }}
                   ></IconButton>
-                  <Center>Home</Center>
+                  <Center className="text-side">Home</Center>
                 </Flex>
               </a>
 
@@ -82,12 +73,12 @@ export default function Sidebar() {
                     variant="link"
                     as={FiSearch}
                     color={"#b3b3b3"}
-                    w={"19.99"}
-                    h={"20.88"}
+                    w={"24px"}
+                    h={"24px"}
                     cursor={"pointer"}
                     _hover={{ color: "white" }}
                   ></IconButton>
-                  <Center>Seacrh</Center>
+                  <Center className="text-side">Seacrh</Center>
                 </Flex>
               </a>
 
@@ -97,12 +88,12 @@ export default function Sidebar() {
                     variant="link"
                     as={VscLibrary}
                     color={"#b3b3b3"}
-                    w={"19.99"}
-                    h={"20.88"}
+                    w={"24px"}
+                    h={"24px"}
                     cursor={"pointer"}
                     _hover={{ color: "white" }}
                   ></IconButton>
-                  <Center>Library</Center>
+                  <Center className="text-side">Library</Center>
                 </Flex>
               </a>
             </Container>
@@ -113,12 +104,12 @@ export default function Sidebar() {
                     variant="link"
                     as={MdAddBox}
                     color={"#b3b3b3"}
-                    w={"19.99"}
-                    h={"20.88"}
+                    w={"24px"}
+                    h={"24px"}
                     cursor={"pointer"}
                     _hover={{ color: "white" }}
                   ></IconButton>
-                  <Center>Create Playlist</Center>
+                  <Center className="text-side">Create Playlist</Center>
                 </Flex>
               </a>
               <a href="#">
@@ -127,15 +118,16 @@ export default function Sidebar() {
                     variant="link"
                     as={FcLike}
                     color={"#b3b3b3"}
-                    w={"19.99"}
-                    h={"20.88"}
+                    w={"24px"}
+                    h={"24px"}
                     cursor={"pointer"}
                     _hover={{ color: "white" }}
                   ></IconButton>
-                  <Center>Liked Songs</Center>
+                  <Center className="text-side">Liked Songs</Center>
                 </Flex>
               </a>
             </Container>
+
             <hr className="hr-sidebar" />
 
             <Box
@@ -152,7 +144,7 @@ export default function Sidebar() {
                 _hover={{ color: "white" }}
               >
                 <a href="">
-                  <span>song title</span>
+                  <span className="song-title">Play List</span>
                 </a>
               </Flex>
               <Flex
@@ -163,7 +155,7 @@ export default function Sidebar() {
                 _hover={{ color: "white" }}
               >
                 <a href="">
-                  <span>song title</span>
+                  <span className="song-title">Play List</span>
                 </a>
               </Flex>
               <Flex
@@ -174,7 +166,7 @@ export default function Sidebar() {
                 _hover={{ color: "white" }}
               >
                 <a href="">
-                  <span>song title</span>
+                  <span className="song-title">Play List</span>
                 </a>
               </Flex>
               <Flex
@@ -185,7 +177,7 @@ export default function Sidebar() {
                 _hover={{ color: "white" }}
               >
                 <a href="">
-                  <span>song title</span>
+                  <span className="song-title">Play List</span>
                 </a>
               </Flex>
               <Flex
@@ -196,7 +188,7 @@ export default function Sidebar() {
                 _hover={{ color: "white" }}
               >
                 <a href="">
-                  <span>song title</span>
+                  <span className="song-title">Play List</span>
                 </a>
               </Flex>
               <Flex
@@ -207,7 +199,7 @@ export default function Sidebar() {
                 _hover={{ color: "white" }}
               >
                 <a href="">
-                  <span>song title</span>
+                  <span className="song-title">Play List</span>
                 </a>
               </Flex>
               <Flex
@@ -218,7 +210,7 @@ export default function Sidebar() {
                 _hover={{ color: "white" }}
               >
                 <a href="">
-                  <span>song title</span>
+                  <span className="song-title">Play List</span>
                 </a>
               </Flex>
               <Flex
@@ -229,7 +221,7 @@ export default function Sidebar() {
                 _hover={{ color: "white" }}
               >
                 <a href="">
-                  <span>song title</span>
+                  <span className="song-title">Play List</span>
                 </a>
               </Flex>
               <Flex
@@ -240,7 +232,7 @@ export default function Sidebar() {
                 _hover={{ color: "white" }}
               >
                 <a href="">
-                  <span>song title</span>
+                  <span className="song-title">Play List</span>
                 </a>
               </Flex>
               <Flex
@@ -251,7 +243,7 @@ export default function Sidebar() {
                 _hover={{ color: "white" }}
               >
                 <a href="">
-                  <span>song title</span>
+                  <span className="song-title">Play List</span>
                 </a>
               </Flex>
               <Flex
@@ -262,7 +254,7 @@ export default function Sidebar() {
                 _hover={{ color: "white" }}
               >
                 <a href="">
-                  <span>song title</span>
+                  <span className="song-title">Play List</span>
                 </a>
               </Flex>
               <Flex
@@ -273,7 +265,7 @@ export default function Sidebar() {
                 _hover={{ color: "white" }}
               >
                 <a href="">
-                  <span>song title</span>
+                  <span className="song-title">Play List</span>
                 </a>
               </Flex>
               <Flex
@@ -284,7 +276,7 @@ export default function Sidebar() {
                 _hover={{ color: "white" }}
               >
                 <a href="">
-                  <span>song title</span>
+                  <span className="song-title">Play List</span>
                 </a>
               </Flex>
             </Box>
@@ -299,7 +291,7 @@ export default function Sidebar() {
                 cursor={"pointer"}
                 padding={"5px"}
               ></IconButton>
-              <div>Install App</div>
+              <div className="text-side">Install App</div>
             </Flex>
           </a>
         </Container> */}

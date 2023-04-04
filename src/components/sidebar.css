@@ -1,6 +1,23 @@
+@font-face {
+  font-family: "CircularBold";
+  src: url(../fonts/CircularStd-Bold.ttf);
+}
+@font-face {
+  font-family: "CircularBook";
+  src: url(../fonts/CircularStd-Book.ttf);
+}
+
+.text-side {
+  font-family: "CircularBold";
+}
+
+.song-title {
+  font-family: "CircularBook";
+}
+
 .bigbox {
   padding-top: 24px;
-  /* padding-bottom: 90px; */
+  padding-bottom: 100px;
 }
 #logo {
   max-width: 100%;
@@ -10,7 +27,7 @@
 .hr-sidebar {
   margin: 8px 24px 0px;
   background-color: #282828;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .scrollbox-sidebar {
@@ -18,12 +35,20 @@
   height: 100%;
 }
 
-/* .scrollbox-sidebar::-webkit-scrollbar {
-  display: none;
-} */
+.scrollbox-sidebar::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #101010;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #4d4d4d;
+}
 
 .scrollbox-sidebar:hover {
-  /* display: block; */
-  /* background-color: blue; */
   overflow-y: scroll;
 }

@@ -59,7 +59,7 @@ export default function MainPage() {
       maxWidth="100%"
       maxHeight="100vh"
     >
-      <Box height="322px" className="gradient">
+      <Box className="gradient">
         <Box
           marginLeft={"241px"}
           height={"100%"}
