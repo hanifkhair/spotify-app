@@ -16,7 +16,7 @@ import logo from "../assets/logo-black.svg";
 import { BsApple, BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
@@ -26,6 +26,10 @@ export default function LoginPage() {
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    console.log("ada ketikan password baru");
+  }, [account.password]);
 
   function inputHandler(e) {
     const { value, id } = e.target;
@@ -158,6 +162,9 @@ export default function LoginPage() {
                 ></Icon>
               </InputRightElement>
             </InputGroup>
+            {account.password.length < 8 ? (
+              <Box color={"red"}>password minimal 8</Box>
+            ) : null}
           </Flex>
 
           <Container textDecor={"underline"} fontWeight={"bold"}>

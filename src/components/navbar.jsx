@@ -2,8 +2,11 @@ import "../css/stylesNavbar.css";
 import { Box, Button, ButtonGroup, IconButton } from "@chakra-ui/react";
 import { TfiArrowCircleLeft } from "react-icons/tfi";
 import { TfiArrowCircleRight } from "react-icons/tfi";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
+  const userSelector = useSelector((state) => state.auth);
+
   return (
     <>
       <Box
@@ -40,7 +43,8 @@ export default function Navbar() {
               font={"16px"}
               padding={"8px 32px 8px 8px"}
             >
-              Sign Up
+              {/* this REDUX */}
+              {userSelector?.email}
             </Button>
             <Button
               color={"#000000"}
@@ -52,6 +56,7 @@ export default function Navbar() {
             </Button>
           </ButtonGroup>
         </Box>
+        <Box></Box>
       </Box>
     </>
   );
