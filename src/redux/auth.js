@@ -11,8 +11,8 @@ function userReducer(state = init, action) {
   if (action.type == auth_types.login)
     return {
       ...state,
-      email: action.playload.email,
-      password: action.playload.password,
+      email: action.payload.email,
+      password: action.payload.password,
     };
   else if (action.type == auth_types.logout) {
     return init;

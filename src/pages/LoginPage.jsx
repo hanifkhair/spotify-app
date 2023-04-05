@@ -50,9 +50,8 @@ export default function LoginPage() {
       payload: account,
     });
     nav("/");
+    localStorage.setItem("user", JSON.stringify(account));
   }
-
-  localStorage.setItem("user", JSON.stringify(account));
 
   return (
     <>

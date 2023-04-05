@@ -59,7 +59,7 @@ export default function Navbar() {
             >
               Log In
             </Button>
-            <Button>Profile {userSelector.email}</Button>
+            <Button>Profile {userSelector?.email}</Button>
           </ButtonGroup>
         </Box>
       </Box>
