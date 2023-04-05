@@ -1,8 +1,10 @@
 import { Box, Button, ButtonGroup, IconButton } from "@chakra-ui/react";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
+  const userSelector = useSelector((state) => state.auth);
   return (
     <>
       <Box
@@ -57,7 +59,7 @@ export default function Navbar() {
             >
               Log In
             </Button>
-            <Button>Profile</Button>
+            <Button>Profile {userSelector.email}</Button>
           </ButtonGroup>
         </Box>
       </Box>
