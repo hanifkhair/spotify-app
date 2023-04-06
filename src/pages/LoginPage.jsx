@@ -17,7 +17,7 @@ import { BsApple, BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { auth_types } from "../redux/types";
 
@@ -30,10 +30,6 @@ export default function LoginPage() {
     password: "",
   });
 
-  useEffect(() => {
-    console.log("ada ketikan password baru");
-  }, [account]);
-
   function inputHandler(e) {
     console.log("asd");
     const { value, id } = e.target;
@@ -43,6 +39,13 @@ export default function LoginPage() {
   }
 
   const [seePassword, setSeePassword] = useState(false);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    // if (user?.email && user?.password) {
+    //   nav("/");
+    // }
+  }, []);
 
   function login() {
     dispatch({
@@ -221,7 +224,7 @@ export default function LoginPage() {
             borderRadius={"25px"}
             border={"1px solid #a5a5a5"}
           >
-            SIGN UP FOR SPOTIFY
+            <Link to={"/register"}>SIGN UP FOR SPOTIFY</Link>
           </Center>
         </Center>
       </Center>

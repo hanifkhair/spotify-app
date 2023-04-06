@@ -1,10 +1,20 @@
 import { Box, Button, ButtonGroup, IconButton } from "@chakra-ui/react";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { auth_types } from "../redux/types";
 
 export default function Navbar() {
   const userSelector = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+  const nav = useNavigate();
+  function logout() {
+    dispatch({ type: auth_types.logout });
+    localStorage.removeItem("user");
+    nav("/login");
+  }
   return (
     <>
       <Box
@@ -56,8 +66,9 @@ export default function Navbar() {
               bgColor={"#FFFFFF"}
               padding={"8px 32px"}
               borderRadius={"25px"}
+              onClick={logout}
             >
-              Log In
+              Log Out
             </Button>
             <Button>Profile {userSelector?.email}</Button>
           </ButtonGroup>

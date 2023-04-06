@@ -8,13 +8,13 @@ const init = {
 function userReducer(state = init, action) {
   //adalah aksionevent yang terjadi
 
-  if (action.type == auth_types.login)
+  if (action.type === auth_types.login)
     return {
       ...state,
       email: action.payload.email,
       password: action.payload.password,
     };
-  else if (action.type == auth_types.logout) {
+  else if (action.type === auth_types.logout) {
     return init;
   }
   return state;

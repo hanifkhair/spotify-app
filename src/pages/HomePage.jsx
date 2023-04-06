@@ -10,34 +10,34 @@ import { useSelector } from "react-redux";
 export default function HomePage(props) {
   const nav = useNavigate();
 
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const userSelector = useSelector((state) => state.auth);
 
   useEffect(() => {
     //masuk sini pada saat load page
 
-    // setTimeout(() => setLoading(false), 1000);
-
-    if (!userSelector.email) {
-      nav("/login");
-    }
+    setTimeout(() => setLoading(false), 1000);
+    const user = JSON.parse(localStorage.getItem("user"));
+    // if (!user?.email) {
+    //   nav("/login");
+    // }
   });
 
   return (
     <>
-      {/* {loading ? (
+      {loading ? (
         <Center w={"100vw"} h={"100vh"}>
           <Spinner />
         </Center>
-      ) : ( */}
-      <>
-        <Navbar />
-        <Sidebar />
-        <Playbar />
-        <MainPage />
-      </>
-      {/* )} */}
+      ) : (
+        <>
+          <Navbar />
+          <Sidebar />
+          <Playbar />
+          <MainPage />
+        </>
+      )}
     </>
   );
 }
