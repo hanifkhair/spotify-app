@@ -119,6 +119,12 @@ export default function RegisterPage() {
         .required("Enter a valid year.")
         .moreThan(0, "Enter a valid year"),
     }),
+    onSubmit: () => {
+      console.log(formik.values);
+      const account = { ...formik.values };
+      account.birthdate = new Date(account.year, account.month, account.day);
+      console.log(account);
+    },
   });
 
   function inputHandler(e) {
@@ -449,6 +455,7 @@ export default function RegisterPage() {
                 bgColor={"#1ed760"}
                 h={"48px"}
                 w={"121px"}
+                onClick={formik.handleSubmit}
               >
                 Sign Up
               </Button>
