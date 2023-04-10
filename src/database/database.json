@@ -15,6 +15,30 @@
       "password": "12345678",
       "birthdate": "",
       "gender": "Female"
+    },
+    {
+      "name": "udin",
+      "email": "test3@mail.com",
+      "password": "12345678",
+      "birthdate": "",
+      "gender": "Female",
+      "id": 3
+    },
+    {
+      "email": "test5@mail.com",
+      "name": "asdasd",
+      "password": "aaaaaaaaaaa",
+      "gender": "male",
+      "birthdate": "1992-12-11T17:00:00.000Z",
+      "id": 4
+    },
+    {
+      "email": "this@this",
+      "name": "this",
+      "password": "12345678",
+      "gender": "male",
+      "birthdate": "0123-04-11T16:52:48.000Z",
+      "id": 5
     }
   ]
 }

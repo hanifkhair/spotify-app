@@ -27,6 +27,7 @@ import { TbAlertCircleFilled } from "react-icons/tb";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import YupPassword from "yup-password";
+import axios from "axios";
 
 export default function RegisterPage() {
   YupPassword(Yup);
@@ -97,7 +98,7 @@ export default function RegisterPage() {
       name: "",
       day: "",
       month: "",
-      yyyy: "",
+      year: "",
       gender: "male",
     },
     validationSchema: Yup.object().shape({
@@ -119,10 +120,34 @@ export default function RegisterPage() {
         .required("Enter a valid year.")
         .moreThan(0, "Enter a valid year"),
     }),
-    onSubmit: () => {
-      console.log(formik.values);
-      const account = { ...formik.values };
-      account.birthdate = new Date(account.year, account.month, account.day);
+    onSubmit: async () => {
+      // console.log(formik.values);
+
+      const { email, name, password, year, month, day, gender } = formik.values;
+      const account = { email, name, password, gender };
+      account.birthdate = new Date(year, month, day);
+
+      const checkEmail = await axios
+        .get("http://localhost:2000/user", {
+          params: { email: account.email },
+        })
+        .then((res) => {
+          if (res.data.length) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+
+      if (checkEmail) {
+        return alert("email allready used");
+      } else {
+        await axios.post("http://localhost:2000/user", account).then((res) => {
+          console.log(res);
+          nav("/login");
+        });
+      }
+
       console.log(account);
     },
   });
@@ -259,7 +284,7 @@ export default function RegisterPage() {
                 fontWeight={"normal"}
                 gap={"10px"}
                 border={"1px solid #a5a5a5"}
-                type="password"
+                type={seePassword ? "text" : "password"}
                 placeholder={"Password"}
                 focusBorderColor="black"
                 onChange={inputHandler}
@@ -349,7 +374,7 @@ export default function RegisterPage() {
               </Select>
 
               <Input
-                id="yyy"
+                id="year"
                 onChange={inputHandler}
                 w={"100%"}
                 maxW={"80px"}
@@ -374,8 +399,8 @@ export default function RegisterPage() {
               >
                 <Icon as={TbAlertCircleFilled} /> {formik.errors.month}
               </Box>
-              <Box color={"red"} display={formik.errors.yyyy ? "flex" : "none"}>
-                <Icon as={TbAlertCircleFilled} /> {formik.errors.yyyy}
+              <Box color={"red"} display={formik.errors.year ? "flex" : "none"}>
+                <Icon as={TbAlertCircleFilled} /> {formik.errors.year}
               </Box>
             </Flex>
           </Flex>

@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Spinner, Center } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 
-export default function HomePage(props) {
+export default function HomePage() {
   const nav = useNavigate();
 
   const [loading, setLoading] = useState(true);
