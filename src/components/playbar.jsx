@@ -20,7 +20,11 @@ import {
 } from "react-icons/bi";
 import { GoPlay } from "react-icons/go";
 import { AiOutlineHeart } from "react-icons/ai";
-import { BsPip } from "react-icons/bs";
+import {
+  BsFillPauseCircleFill,
+  BsFillPlayCircleFill,
+  BsPip,
+} from "react-icons/bs";
 import { TbMicrophone2, TbDevices2 } from "react-icons/tb";
 import { HiOutlineQueueList } from "react-icons/hi2";
 import { SlVolume2 } from "react-icons/sl";
@@ -29,6 +33,11 @@ import { useEffect, useState } from "react";
 
 export default function Playbar(props) {
   const [audio, setAudio] = useState({});
+  const [duration, setDuration] = useState(0);
+  const [counter, setCounter] = useState(0);
+
+  const [pause, setPause] = useState(true);
+  const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
     console.log(props.playlist);
@@ -40,11 +49,43 @@ export default function Playbar(props) {
       const tempAudio = new Audio(
         require("../assets/audio/" + props.playlist[0].src)
       );
-      // tempAudio.addEventListener("loadedmetadata", function () {
-      //   setDuration(tempAudio.duration);
-      // })
+      tempAudio.addEventListener("loadedmetadata", function () {
+        setDuration(tempAudio.duration);
+        console.log(tempAudio.duration);
+      });
+
       setAudio(tempAudio);
     }
+  }
+
+  function play(status) {
+    setPause(status);
+    if (!status) {
+      audio.play();
+      setTimeout(() => setCurrentTime(audio.currentTime), 500);
+      return;
+    }
+    audio.pause();
+  }
+
+  useEffect(() => {
+    updateTime();
+  }, [currentTime]);
+
+  async function updateTime() {
+    if (currentTime == audio.currentTime && audio.duration) {
+      setCounter(counter + 1);
+      // return await changeSong(counter + 1);
+      return;
+    }
+    const promise = new Promise((resolve) => {
+      setTimeout(() => {
+        if (!pause) {
+          resolve(setCurrentTime(audio.currentTime));
+        }
+      }, 500);
+    });
+    return await promise;
   }
 
   return (
@@ -58,7 +99,7 @@ export default function Playbar(props) {
         bottom={0}
         direction="row"
         align="center"
-        justify="center"
+        justify="space-between"
       >
         {/* Description */}
         <Flex className="msc-desc" gap={3} w={"30%"} align={"center"}>
@@ -113,10 +154,11 @@ export default function Playbar(props) {
 
             <IconButton
               variant={"link"}
-              as={GoPlay}
+              as={pause ? BsFillPlayCircleFill : BsFillPauseCircleFill}
               style={{ width: "40px", height: "40px" }}
               color="white"
-              onClick={() => audio.play()}
+              // onClick={() => audio.play(!pause)}
+              onClick={() => play(!pause)}
             ></IconButton>
 
             <Box>
@@ -143,12 +185,29 @@ export default function Playbar(props) {
             justify={"space-between"}
             width={"100%"}
           >
-            <Box color={"white"} width={10}>
-              <Center>0:00</Center>
+            <Box color={"white"} width={20}>
+              <Center>
+                0{Math.floor(audio.currentTime / 60)} :{" "}
+                {Math.floor(audio.currentTime % 60) > 9
+                  ? Math.floor(audio.currentTime % 60)
+                  : "0" + Math.floor(audio.currentTime % 60)}
+              </Center>
             </Box>
 
-            <Box className="prog-bar" width={"100%"}>
-              <Slider aria-label="slider-ex-1" w={350}>
+            <Box className="prog-bar" width={"90%"}>
+              <Slider
+                aria-label="slider-ex-1"
+                w={"100%"}
+                value={Math.round(audio?.currentTime * 100) / audio?.duration}
+                onChange={(val) => {
+                  let changeDur = val / 100;
+                  if (audio.duration) {
+                    changeDur *= audio.duration;
+                  }
+                  audio.currentTime = changeDur;
+                  setCurrentTime(audio?.currentTime);
+                }}
+              >
                 <SliderTrack>
                   <SliderFilledTrack />
                 </SliderTrack>
@@ -156,8 +215,13 @@ export default function Playbar(props) {
               </Slider>
             </Box>
 
-            <Box color={"white"} width={10}>
-              <Center>3:20</Center>
+            <Box color={"white"} width={20}>
+              <Center>
+                0{Math.floor(duration / 60)} :{" "}
+                {Math.floor(duration % 60) > 9
+                  ? Math.floor(duration % 60)
+                  : "0" + Math.floor(duration % 60)}
+              </Center>
             </Box>
           </Flex>
         </Flex>
@@ -170,6 +234,7 @@ export default function Playbar(props) {
           gap={2}
           align={"center"}
           h={50}
+          paddingRight={"50"}
         >
           <Link>
             <Icon as={TbMicrophone2} w={6} h={5} color={"white"}></Icon>
@@ -183,7 +248,12 @@ export default function Playbar(props) {
           <Link>
             <Icon as={SlVolume2} w={6} h={5} color={"white"}></Icon>
           </Link>
-          <Slider aria-label="slider-ex-1" w={28}>
+          <Slider
+            aria-label="slider-ex-1"
+            w={28}
+            defaultValue={audio?.volume * 100}
+            onChange={(vol) => (audio.volume = vol / 100)}
+          >
             <SliderTrack>
               <SliderFilledTrack />
             </SliderTrack>
