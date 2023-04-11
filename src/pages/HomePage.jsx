@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Spinner, Center } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 export default function HomePage() {
   const nav = useNavigate();
@@ -24,6 +25,17 @@ export default function HomePage() {
     // }
   });
 
+  const [playlist, setPlaylist] = useState([]);
+  async function fetchData() {
+    await axios
+      .get("http://localhost:2000/musics")
+      .then((res) => setPlaylist(res.data));
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       {loading ? (
@@ -34,7 +46,7 @@ export default function HomePage() {
         <>
           <Navbar />
           <Sidebar />
-          <Playbar />
+          <Playbar playlist={playlist} />
           <MainPage />
         </>
       )}

@@ -25,8 +25,28 @@ import { TbMicrophone2, TbDevices2 } from "react-icons/tb";
 import { HiOutlineQueueList } from "react-icons/hi2";
 import { SlVolume2 } from "react-icons/sl";
 import pic from "../images/bg-spotify.jpg";
+import { useEffect, useState } from "react";
 
-export default function Playbar() {
+export default function Playbar(props) {
+  const [audio, setAudio] = useState({});
+
+  useEffect(() => {
+    console.log(props.playlist);
+    soundTrack();
+  }, []);
+
+  function soundTrack() {
+    if (props.playlist?.length) {
+      const tempAudio = new Audio(
+        require("../assets/audio/" + props.playlist[0].src)
+      );
+      // tempAudio.addEventListener("loadedmetadata", function () {
+      //   setDuration(tempAudio.duration);
+      // })
+      setAudio(tempAudio);
+    }
+  }
+
   return (
     <Container bottom="0" position="fixed" width="100%" zIndex="3">
       <Flex
@@ -96,6 +116,7 @@ export default function Playbar() {
               as={GoPlay}
               style={{ width: "40px", height: "40px" }}
               color="white"
+              onClick={() => audio.play()}
             ></IconButton>
 
             <Box>

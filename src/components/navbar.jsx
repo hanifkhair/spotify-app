@@ -70,7 +70,7 @@ export default function Navbar() {
             >
               Log Out
             </Button>
-            <Button>Profile {userSelector?.email}</Button>
+            <Button>Profile {userSelector?.name}</Button>
           </ButtonGroup>
         </Box>
       </Box>

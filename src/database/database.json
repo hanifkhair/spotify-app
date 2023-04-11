@@ -39,6 +39,43 @@
       "gender": "male",
       "birthdate": "0123-04-11T16:52:48.000Z",
       "id": 5
+    },
+    {
+      "email": "nama@mail.com",
+      "name": "nama",
+      "password": "sandinama",
+      "gender": "male",
+      "birthdate": "1890-02-16T16:52:48.000Z",
+      "id": 6
+    }
+  ],
+  "todo": [
+    {
+      "date": "2023-04-11",
+      "judul": "keg 1",
+      "desc": "kdanda sdmas;ldm as",
+      "id": 1
+    },
+    {
+      "date": "2023-04-11",
+      "judul": "ads",
+      "desc": "asd",
+      "id": 4
+    },
+    {
+      "date": "3123-01-03",
+      "judul": "asdas",
+      "desc": "asd",
+      "id": 5
+    }
+  ],
+  "musics": [
+    {
+      "id": "1",
+      "titile": "Hypotheticals",
+      "singer": "Lake Street Dive",
+      "src": "hypo.mp3",
+      "img": "https://upload.wikimedia.org/wikipedia/en/4/49/Lake_Street_Dive_-_Obviously.png"
     }
   ]
 }
