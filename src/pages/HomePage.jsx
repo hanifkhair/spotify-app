@@ -28,6 +28,7 @@ export default function HomePage() {
   const [playlist, setPlaylist] = useState([]);
   const [home_playlist, setHome_playlist] = useState();
   const [home2_playlist, setHome2_playlist] = useState();
+  const [sidebar_playlist, setSidebar_playlist] = useState();
   async function fetchData() {
     await axios
       .get("http://localhost:2000/musics")
@@ -42,6 +43,9 @@ export default function HomePage() {
         params: { type: "spoty-playlist" },
       })
       .then((res) => setHome2_playlist(res.data));
+    await axios
+      .get("http://localhost:2000/playlist")
+      .then((res) => setSidebar_playlist(res.data));
   }
 
   useEffect(() => {
@@ -57,7 +61,7 @@ export default function HomePage() {
       ) : (
         <>
           <Navbar />
-          <Sidebar />
+          <Sidebar data={sidebar_playlist} />
           <Playbar playlist={playlist} />
           <MainPage
             data={home_playlist}

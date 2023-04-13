@@ -26,9 +26,13 @@ import { MdAddBox } from "react-icons/md";
 import { FcLike } from "react-icons/fc";
 import { MdDownloading } from "react-icons/md";
 import { color } from "framer-motion";
+import { useEffect } from "react";
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  useEffect(() => {
+    console.log(props.data);
+  }, []);
   return (
     <>
       <Box
@@ -152,167 +156,29 @@ export default function Sidebar() {
               // h={"100%"}
               padding={"10px 16px"}
             >
-              <Flex
-                w={"241"}
-                h={"32px"}
-                padding={"0 10px"}
-                alignItems={"center"}
-                _hover={{ color: "white" }}
-              >
-                <a href="">
-                  <span className="song-title">Play List</span>
-                </a>
-              </Flex>
-              <Flex
-                w={"241"}
-                h={"32px"}
-                padding={"0 10px"}
-                alignItems={"center"}
-                _hover={{ color: "white" }}
-              >
-                <a href="">
-                  <span className="song-title">Play List</span>
-                </a>
-              </Flex>
-              <Flex
-                w={"241"}
-                h={"32px"}
-                padding={"0 10px"}
-                alignItems={"center"}
-                _hover={{ color: "white" }}
-              >
-                <a href="">
-                  <span className="song-title">Play List</span>
-                </a>
-              </Flex>
-              <Flex
-                w={"241"}
-                h={"32px"}
-                padding={"0 10px"}
-                alignItems={"center"}
-                _hover={{ color: "white" }}
-              >
-                <a href="">
-                  <span className="song-title">Play List</span>
-                </a>
-              </Flex>
-              <Flex
-                w={"241"}
-                h={"32px"}
-                padding={"0 10px"}
-                alignItems={"center"}
-                _hover={{ color: "white" }}
-              >
-                <a href="">
-                  <span className="song-title">Play List</span>
-                </a>
-              </Flex>
-              <Flex
-                w={"241"}
-                h={"32px"}
-                padding={"0 10px"}
-                alignItems={"center"}
-                _hover={{ color: "white" }}
-              >
-                <a href="">
-                  <span className="song-title">Play List</span>
-                </a>
-              </Flex>
-              <Flex
-                w={"241"}
-                h={"32px"}
-                padding={"0 10px"}
-                alignItems={"center"}
-                _hover={{ color: "white" }}
-              >
-                <a href="">
-                  <span className="song-title">Play List</span>
-                </a>
-              </Flex>
-              <Flex
-                w={"241"}
-                h={"32px"}
-                padding={"0 10px"}
-                alignItems={"center"}
-                _hover={{ color: "white" }}
-              >
-                <a href="">
-                  <span className="song-title">Play List</span>
-                </a>
-              </Flex>
-              <Flex
-                w={"241"}
-                h={"32px"}
-                padding={"0 10px"}
-                alignItems={"center"}
-                _hover={{ color: "white" }}
-              >
-                <a href="">
-                  <span className="song-title">Play List</span>
-                </a>
-              </Flex>
-              <Flex
-                w={"241"}
-                h={"32px"}
-                padding={"0 10px"}
-                alignItems={"center"}
-                _hover={{ color: "white" }}
-              >
-                <a href="">
-                  <span className="song-title">Play List</span>
-                </a>
-              </Flex>
-              <Flex
-                w={"241"}
-                h={"32px"}
-                padding={"0 10px"}
-                alignItems={"center"}
-                _hover={{ color: "white" }}
-              >
-                <a href="">
-                  <span className="song-title">Play List</span>
-                </a>
-              </Flex>
-              <Flex
-                w={"241"}
-                h={"32px"}
-                padding={"0 10px"}
-                alignItems={"center"}
-                _hover={{ color: "white" }}
-              >
-                <a href="">
-                  <span className="song-title">Play List</span>
-                </a>
-              </Flex>
-              <Flex
-                w={"241"}
-                h={"32px"}
-                padding={"0 10px"}
-                alignItems={"center"}
-                _hover={{ color: "white" }}
-              >
-                <a href="">
-                  <span className="song-title">Play List</span>
-                </a>
-              </Flex>
+              {props?.data.map((val) => (
+                <Playlist titile={val.titile} />
+              ))}
             </Box>
           </Flex>
-          {/* <Container>
-          <a href="#">
-            <Flex>
-              <IconButton
-                variant="link"
-                as={MdDownloading}
-                color={"#b3b3b3"}
-                cursor={"pointer"}
-                padding={"5px"}
-              ></IconButton>
-              <div className="text-side">Install App</div>
-            </Flex>
-          </a>
-        </Container> */}
         </Flex>
       </Box>
     </>
+  );
+}
+
+function Playlist(props) {
+  return (
+    <Flex
+      w={"241"}
+      h={"32px"}
+      padding={"0 10px"}
+      alignItems={"center"}
+      _hover={{ color: "white" }}
+    >
+      <a href="">
+        <span className="song-title">{props.titile}</span>
+      </a>
+    </Flex>
   );
 }
