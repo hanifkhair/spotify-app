@@ -11,6 +11,7 @@ import {
   SliderFilledTrack,
   SliderThumb,
   Center,
+  space,
 } from "@chakra-ui/react";
 import {
   BiSkipNext,
@@ -18,7 +19,6 @@ import {
   BiSkipPrevious,
   BiRepeat,
 } from "react-icons/bi";
-import { GoPlay } from "react-icons/go";
 import { AiOutlineHeart } from "react-icons/ai";
 import {
   BsFillPauseCircleFill,
@@ -30,6 +30,7 @@ import { HiOutlineQueueList } from "react-icons/hi2";
 import { SlVolume2 } from "react-icons/sl";
 import pic from "../images/bg-spotify.jpg";
 import { useEffect, useState } from "react";
+import { color } from "framer-motion";
 
 export default function Playbar(props) {
   const [audio, setAudio] = useState({});
@@ -73,10 +74,10 @@ export default function Playbar(props) {
   }, [currentTime]);
 
   async function updateTime() {
-    if (currentTime == audio.currentTime && audio.duration) {
+    if (currentTime == audio.duration && audio.duration) {
       setCounter(counter + 1);
-      // return await changeSong(counter + 1);
-      return;
+      return await changeSong(counter + 1);
+      // return;
     }
     const promise = new Promise((resolve) => {
       setTimeout(() => {
@@ -87,6 +88,32 @@ export default function Playbar(props) {
     });
     return await promise;
   }
+
+  async function changeSong(track) {
+    if (track > props.playlist.length - 1 || track < 0) {
+      track = 0;
+    }
+    setCounter(track);
+    audio.src = require("../assets/audio/" + props.playlist[track].src);
+
+    return audio.play().finally(() => {
+      setPause(false);
+      updateTime();
+    });
+  }
+
+  function changePlaylist() {
+    setTimeout(() => setCurrentTime(audio?.currentTime), 500);
+    if (audio.src) {
+      setCounter(0);
+      changeSong(0);
+    } else {
+      soundTrack();
+    }
+  }
+  useEffect(() => {
+    changePlaylist();
+  }, [props.playlist]);
 
   return (
     <Container bottom="0" position="fixed" width="100%" zIndex="3">
@@ -103,13 +130,17 @@ export default function Playbar(props) {
       >
         {/* Description */}
         <Flex className="msc-desc" gap={3} w={"30%"} align={"center"}>
-          <Image src={pic} w={70} h={70} />
+          <Image
+            src={props.playlist?.length ? props.playlist[counter]?.img : null}
+            w={70}
+            h={70}
+          />
           <Flex className="msc-intr" direction={"column"} justify={"center"}>
             <Link href="#" color={"white"}>
-              Ramadhan
+              {props.playlist[counter]?.titile}
             </Link>
             <Link href="#" color={"white"}>
-              Mishari Rashid
+              {props.playlist[counter]?.singer}
             </Link>
           </Flex>
           <Link href="#">
@@ -149,6 +180,11 @@ export default function Playbar(props) {
                 as={BiSkipPrevious}
                 style={{ width: "40px", height: "40px" }}
                 color="#999"
+                _hover={{ color: "white" }}
+                onClick={async () => {
+                  setCounter(counter - 1);
+                  await changeSong(counter - 1);
+                }}
               ></IconButton>
             </Box>
 
@@ -167,6 +203,11 @@ export default function Playbar(props) {
                 as={BiSkipNext}
                 style={{ width: "40px", height: "40px" }}
                 color="#999"
+                _hover={{ color: "white" }}
+                onClick={async () => {
+                  setCounter(counter + 1);
+                  await changeSong(counter + 1);
+                }}
               ></IconButton>
             </Box>
             <Box>
@@ -251,7 +292,7 @@ export default function Playbar(props) {
           <Slider
             aria-label="slider-ex-1"
             w={28}
-            defaultValue={audio?.volume * 100}
+            defaultValue={100}
             onChange={(vol) => (audio.volume = vol / 100)}
           >
             <SliderTrack>

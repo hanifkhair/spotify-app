@@ -26,10 +26,15 @@ export default function HomePage() {
   });
 
   const [playlist, setPlaylist] = useState([]);
+  const [home_playlist, setHome_playlist] = useState();
   async function fetchData() {
     await axios
       .get("http://localhost:2000/musics")
       .then((res) => setPlaylist(res.data));
+
+    await axios
+      .get("http://localhost:2000/playlist")
+      .then((res) => setHome_playlist(res.data));
   }
 
   useEffect(() => {
@@ -47,7 +52,7 @@ export default function HomePage() {
           <Navbar />
           <Sidebar />
           <Playbar playlist={playlist} />
-          <MainPage />
+          <MainPage data={home_playlist} setPlaylist={setPlaylist} />
         </>
       )}
     </>
