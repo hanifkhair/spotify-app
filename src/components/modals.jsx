@@ -8,12 +8,16 @@ import {
   Textarea,
   Center,
 } from "@chakra-ui/react";
+import axios from "axios";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
+
 export function CreatePlaylist(props) {
   const [imgUrl, setImgUrl] = useState(
     require("../assets/default-spotify.png")
   );
+
+  const [musiclist, setMusiclist] = useState([]);
 
   function input(e) {
     if (!e.target.value) {
@@ -22,6 +26,10 @@ export function CreatePlaylist(props) {
     }
     setImgUrl(e.target.value);
   }
+
+  axios
+    .get("http://localhost:2000/musics?")
+    .then((res) => setMusiclist(res.data));
 
   return (
     <>
@@ -89,10 +97,29 @@ export function CreatePlaylist(props) {
           </Flex>
         </Flex>
         <Flex flexDir={"column"}>
-          <Flex paddingX={"24px"} fontWeight={"bold"}>
-            Add Musics
-          </Flex>
-          <ListMusics />
+          <Center>
+            <Flex paddingX={"24px"} fontWeight={"bold"}>
+              Add Musics
+            </Flex>
+          </Center>
+
+          <Grid gridTemplateColumns={"1fr 1fr 1fr"}>
+            <GridItem w="100%" h="25px"></GridItem>
+            <GridItem w="100%" h="25px" fontWeight={"bold"}>
+              Title
+            </GridItem>
+            <GridItem w="100%" h="25px" fontWeight={"bold"}>
+              Artist
+            </GridItem>
+          </Grid>
+
+          {musiclist.map((val) => (
+            <ListMusics titile={val.titile} singer={val.singer} />
+          ))}
+        </Flex>
+        <Flex gap={"20px"} w="100%" justifyContent={"center"} margin={"10px 0"}>
+          <Flex cursor={"pointer"}>Prev</Flex>
+          <Flex cursor={"pointer"}>Next</Flex>
         </Flex>
 
         <Center w="100%">
@@ -112,90 +139,25 @@ export function CreatePlaylist(props) {
   );
 }
 
-export function ListMusics() {
+export function ListMusics(props) {
   return (
     <>
-      <Flex flexDir={"column"} paddingBottom="10px" gap={"10px"}>
-        <Grid
-          templateColumns="1fr 2fr 1fr"
-          columnGap={5}
-          maxH={"550px"}
-          overflow={"hidden"}
-        >
-          <GridItem w="100%" h="25px"></GridItem>
-          <GridItem w="100%" h="25px" fontWeight={"bold"}>
-            Title
-          </GridItem>
-          <GridItem w="100%" h="25px" fontWeight={"bold"}>
-            Artist
-          </GridItem>
-
-          <GridItem w="100%" h="25px" fontWeight={"bold"}>
-            <Center>Add</Center>
-          </GridItem>
-          <GridItem w="100%" h="25px">
-            Akhir Cerita Cinta
-          </GridItem>
-          <GridItem w="100%" h="25px">
-            Glenn Fredly
-          </GridItem>
-
-          <GridItem w="100%" h="25px" fontWeight={"bold"}>
-            <Center>Add</Center>
-          </GridItem>
-          <GridItem w="100%" h="25px">
-            Akhir Cerita Cinta
-          </GridItem>
-          <GridItem w="100%" h="25px">
-            Glenn Fredly
-          </GridItem>
-
-          <GridItem w="100%" h="25px" fontWeight={"bold"}>
-            <Center>Add</Center>
-          </GridItem>
-          <GridItem w="100%" h="25px">
-            Akhir Cerita Cinta
-          </GridItem>
-          <GridItem w="100%" h="25px">
-            Glenn Fredly
-          </GridItem>
-
-          <GridItem w="100%" h="25px" fontWeight={"bold"}>
-            <Center>Add</Center>
-          </GridItem>
-          <GridItem w="100%" h="25px">
-            Akhir Cerita Cinta
-          </GridItem>
-          <GridItem w="100%" h="25px">
-            Glenn Fredly
-          </GridItem>
-
-          <GridItem w="100%" h="25px" fontWeight={"bold"}>
-            <Center>Add</Center>
-          </GridItem>
-          <GridItem w="100%" h="25px">
-            Akhir Cerita Cinta
-          </GridItem>
-          <GridItem w="100%" h="25px">
-            Glenn Fredly
-          </GridItem>
-
-          <GridItem w="100%" h="25px" fontWeight={"bold"}>
-            <Center>Add</Center>
-          </GridItem>
-          <GridItem w="100%" h="25px">
-            Akhir Cerita Cinta
-          </GridItem>
-          <GridItem w="100%" h="25px">
-            Glenn Fredly
-          </GridItem>
-        </Grid>
-
-        <Flex gap={"20px"} w="100%" justifyContent={"center"}>
-          <Flex cursor={"pointer"}>Prev</Flex>
-          <Flex cursor={"pointer"}>Next</Flex>
-        </Flex>
-      </Flex>
+      <Grid
+        templateColumns="1fr 2fr 1fr"
+        columnGap={5}
+        maxH={"550px"}
+        overflow={"hidden"}
+      >
+        <GridItem w="100%" h="25px" fontWeight={"bold"}>
+          <Center>Add</Center>
+        </GridItem>
+        <GridItem w="100%" h="25px">
+          {props.titile}
+        </GridItem>
+        <GridItem w="100%" h="25px">
+          {props.singer}
+        </GridItem>
+      </Grid>
     </>
   );
 }
