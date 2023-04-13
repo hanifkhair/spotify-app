@@ -91,9 +91,9 @@ export default function MainPage(props) {
               position={"relative"}
               // zIndex={"3"}
             >
-              {/* {data2.map((val) => (
-                <Card url={val.url} judul={val.judul} desc={val.desc} />
-              ))} */}
+              {props?.data2.map((val) => (
+                <Card {...val} setPlaylist={props.setPlaylist} />
+              ))}
             </Flex>
           </Flex>
         </Box>
@@ -110,7 +110,7 @@ function Card(props) {
       justifyContent={"center"}
       alignItems={"center"}
       onClick={() => {
-        props?.setPlaylist(props.list);
+        props?.setPlaylist(props?.list);
       }}
     >
       <Box className="play">

@@ -27,14 +27,21 @@ export default function HomePage() {
 
   const [playlist, setPlaylist] = useState([]);
   const [home_playlist, setHome_playlist] = useState();
+  const [home2_playlist, setHome2_playlist] = useState();
   async function fetchData() {
     await axios
       .get("http://localhost:2000/musics")
       .then((res) => setPlaylist(res.data));
 
     await axios
-      .get("http://localhost:2000/playlist")
+      .get("http://localhost:2000/playlist", { params: { type: "focus" } })
       .then((res) => setHome_playlist(res.data));
+
+    await axios
+      .get("http://localhost:2000/playlist", {
+        params: { type: "spoty-playlist" },
+      })
+      .then((res) => setHome2_playlist(res.data));
   }
 
   useEffect(() => {
@@ -52,7 +59,11 @@ export default function HomePage() {
           <Navbar />
           <Sidebar />
           <Playbar playlist={playlist} />
-          <MainPage data={home_playlist} setPlaylist={setPlaylist} />
+          <MainPage
+            data={home_playlist}
+            data2={home2_playlist}
+            setPlaylist={setPlaylist}
+          />
         </>
       )}
     </>

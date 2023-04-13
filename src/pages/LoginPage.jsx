@@ -11,6 +11,7 @@ import {
   InputGroup,
   InputRightElement,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import logo from "../assets/logo-black.svg";
 import { BsApple, BsFacebook } from "react-icons/bs";
@@ -21,6 +22,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { auth_types } from "../redux/types";
 import axios from "axios";
+import { userLogin } from "../redux/middlewares/userauth";
 
 export default function LoginPage() {
   const nav = useNavigate();
@@ -40,6 +42,7 @@ export default function LoginPage() {
   }
 
   const [seePassword, setSeePassword] = useState(false);
+  const toast = useToast();
 
   // useEffect(() => {
   // const user = JSON.parse(localStorage.getItem("user"));
@@ -49,28 +52,46 @@ export default function LoginPage() {
   // }, []);
 
   async function login() {
-    //karena butuh waktu untuk mendapat data dari API
-    //maka function diubah menjadi asycn
+    //   //karena butuh waktu untuk mendapat data dari API
+    //   //maka function diubah menjadi asycn
 
-    await axios
-      .get("http://localhost:2000/user", {
-        params: {
-          email: account.email.toLocaleLowerCase(),
-          password: account.password,
-        },
-      })
-      .then((res) => {
-        if (res.data.length) {
-          dispatch({
-            type: auth_types.login,
-            payload: res.data[0],
-          });
-          localStorage.setItem("user", JSON.stringify(res.data[0]));
-          nav("/");
-        } else {
-          alert("email atau password salah");
-        }
+    //   await axios
+    //     .get("http://localhost:2000/user", {
+    //       params: {
+    //         email: account.email.toLocaleLowerCase(),
+    //         password: account.password,
+    //       },
+    //     })
+    //     .then((res) => {
+    //       if (res.data.length) {
+    //         dispatch({
+    //           type: auth_types.login,
+    //           payload: res.data[0],
+    //         });
+    //         localStorage.setItem("user", JSON.stringify(res.data[0]));
+    //         nav("/");
+    //       } else {
+    //         alert("email atau password salah");
+    //       }
+    //     });
+    const status = await dispatch(userLogin(account));
+    toast.closeAll();
+
+    if (status) {
+      toast({
+        title: "You are succesfully logged in",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
       });
+      return nav("/");
+    }
+    return toast({
+      title: "wrong Email/Password",
+      status: "error",
+      duration: 3000,
+      isClosable: true,
+    });
   }
 
   return (

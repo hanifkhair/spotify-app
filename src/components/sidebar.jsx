@@ -1,5 +1,6 @@
 import "./sidebar.css";
 import logo from "../assets/logo-white.svg";
+import { CreatePlaylist } from "./modals";
 import {
   Box,
   IconButton,
@@ -9,6 +10,14 @@ import {
   Icon,
   background,
   Center,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { AiFillHome } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
@@ -19,6 +28,7 @@ import { MdDownloading } from "react-icons/md";
 import { color } from "framer-motion";
 
 export default function Sidebar() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <Box
@@ -99,7 +109,13 @@ export default function Sidebar() {
             </Container>
             <Container>
               <a href="#">
-                <Flex p={"8px 0"} _hover={{ color: "white" }}>
+                <Flex p={"8px 0"} _hover={{ color: "white" }} onClick={onOpen}>
+                  <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+                      <CreatePlaylist onClose={onClose} />
+                    </ModalContent>
+                  </Modal>
                   <IconButton
                     variant="link"
                     as={MdAddBox}
