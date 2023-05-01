@@ -61,7 +61,7 @@ export default function HomePage() {
       ) : (
         <>
           <Navbar />
-          <Sidebar data={sidebar_playlist} />
+          <Sidebar data={sidebar_playlist} setPlaylist={setPlaylist} />
           <Playbar playlist={playlist} />
           <MainPage
             data={home_playlist}

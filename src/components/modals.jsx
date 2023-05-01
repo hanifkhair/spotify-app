@@ -7,10 +7,13 @@ import {
   Input,
   Textarea,
   Center,
+  Checkbox,
+  Box,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
+import { useSelector } from "react-redux";
 
 export function CreatePlaylist(props) {
   const [imgUrl, setImgUrl] = useState(
@@ -18,6 +21,8 @@ export function CreatePlaylist(props) {
   );
 
   const [musiclist, setMusiclist] = useState([]);
+  const [page, setPage] = useState(1);
+  const [add, setAdd] = useState(false);
 
   function input(e) {
     if (!e.target.value) {
@@ -27,9 +32,60 @@ export function CreatePlaylist(props) {
     setImgUrl(e.target.value);
   }
 
-  axios
-    .get("http://localhost:2000/musics?")
-    .then((res) => setMusiclist(res.data));
+  // GET SONGS
+  async function ambil(page) {
+    await axios
+      .get("http://localhost:2000/musics", {
+        params: { _limit: 2, _page: page },
+      })
+      .then((res) => {
+        let total = Math.ceil(res.headers["x-total-count"] / 2);
+        if (total >= page && page > 0) {
+          setMusiclist(res.data);
+        } else if (page) {
+          page--;
+        } else {
+          page = 1;
+        }
+      });
+    return page;
+  }
+
+  useEffect(() => {
+    ambil(page);
+  }, []);
+
+  // GET Playlist Header
+  const userSelector = useSelector((state) => state.auth);
+  const [details, setDetails] = useState({
+    imgURL: "",
+    titile: "",
+    desc: "",
+    createBy: userSelector.email,
+    list: [],
+  });
+
+  function inputHandler(e) {
+    const id = e.target.id;
+    const value = e.target.value;
+    const tempObj = { ...details };
+    tempObj[id] = value;
+    setDetails(tempObj);
+    // console.log(tempObj);
+  }
+
+  // ADD
+  if (add) {
+    // alert("true");
+  } else {
+    // alert("false");
+  }
+
+  // SAVE
+  async function save() {
+    // const { imgURL, playlist, desc, createBy, list } = details;
+    await axios.post("http://localhost:2000/playlist", details);
+  }
 
   return (
     <>
@@ -74,7 +130,11 @@ export function CreatePlaylist(props) {
               w="180px"
               h="40px"
               placeholder="Image URL"
-              onChange={input}
+              id="imgURL"
+              onChange={(e) => {
+                input(e);
+                inputHandler(e);
+              }}
             ></Input>
           </Flex>
           <Flex flexDir={"column"} justifyContent={"space-between"}>
@@ -84,6 +144,8 @@ export function CreatePlaylist(props) {
               w="280px"
               h="40px"
               placeholder="Title"
+              id="titile"
+              onChange={(e) => inputHandler(e)}
             ></Input>
             <Textarea
               bgColor={"#3E3E3E"}
@@ -93,6 +155,8 @@ export function CreatePlaylist(props) {
               h={"100%"}
               resize={"none"}
               placeholder="Description"
+              id="desc"
+              onChange={(e) => inputHandler(e)}
             ></Textarea>
           </Flex>
         </Flex>
@@ -114,12 +178,35 @@ export function CreatePlaylist(props) {
           </Grid>
 
           {musiclist.map((val) => (
-            <ListMusics titile={val.titile} singer={val.singer} />
+            <ListMusics
+              details={details}
+              titile={val.titile}
+              singer={val.singer}
+              setAdd={setAdd}
+              add={add}
+              val={val}
+            />
           ))}
         </Flex>
         <Flex gap={"20px"} w="100%" justifyContent={"center"} margin={"10px 0"}>
-          <Flex cursor={"pointer"}>Prev</Flex>
-          <Flex cursor={"pointer"}>Next</Flex>
+          <Flex
+            onClick={async () => {
+              const p = await ambil(page - 1);
+              return setPage(p);
+            }}
+            cursor={"pointer"}
+          >
+            Prev
+          </Flex>
+          <Flex
+            onClick={async () => {
+              const p = await ambil(page + 1);
+              return setPage(p);
+            }}
+            cursor={"pointer"}
+          >
+            Next
+          </Flex>
         </Flex>
 
         <Center w="100%">
@@ -130,6 +217,7 @@ export function CreatePlaylist(props) {
             h="48px"
             w="90%"
             cursor={"pointer"}
+            onClick={save}
           >
             SAVE
           </Center>
@@ -149,12 +237,22 @@ export function ListMusics(props) {
         overflow={"hidden"}
       >
         <GridItem w="100%" h="25px" fontWeight={"bold"}>
-          <Center>Add</Center>
+          <Center
+            onClick={() => {
+              props.setAdd(!props.add);
+              props.details.list.push(props.val);
+              console.log(props.details.list);
+            }}
+            _hover={{ cursor: "pointer" }}
+          >
+            {/* {props.add ? <Box bgColor={"green"}>Added</Box> : <Box>Add</Box>} */}
+            <Box>Add</Box>
+          </Center>
         </GridItem>
-        <GridItem w="100%" h="25px">
+        <GridItem w="100%" h="25px" id="title">
           {props.titile}
         </GridItem>
-        <GridItem w="100%" h="25px">
+        <GridItem w="100%" h="25px" id="singer">
           {props.singer}
         </GridItem>
       </Grid>

@@ -30,6 +30,8 @@ import { useEffect } from "react";
 
 export default function Sidebar(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  let data = props.data;
+
   useEffect(() => {
     console.log(props.data);
   }, []);
@@ -117,7 +119,7 @@ export default function Sidebar(props) {
                   <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent>
-                      <CreatePlaylist onClose={onClose} />
+                      <CreatePlaylist onClose={onClose} data={data} />
                     </ModalContent>
                   </Modal>
                   <IconButton
@@ -157,7 +159,11 @@ export default function Sidebar(props) {
               padding={"10px 16px"}
             >
               {props?.data.map((val) => (
-                <Playlist titile={val.titile} />
+                <Playlist
+                  titile={val.titile}
+                  setPlaylist={props.setPlaylist}
+                  list={val.list}
+                />
               ))}
             </Box>
           </Flex>
@@ -175,6 +181,9 @@ function Playlist(props) {
       padding={"0 10px"}
       alignItems={"center"}
       _hover={{ color: "white" }}
+      onClick={() => {
+        props?.setPlaylist(props.list);
+      }}
     >
       <a href="">
         <span className="song-title">{props.titile}</span>
