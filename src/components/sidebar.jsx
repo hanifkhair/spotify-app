@@ -32,9 +32,9 @@ export default function Sidebar(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   let data = props.data;
 
-  useEffect(() => {
-    console.log(props.data);
-  }, []);
+  // useEffect(() => {
+  //   console.log(props.data);
+  // }, []);
   return (
     <>
       <Box
@@ -183,6 +183,7 @@ function Playlist(props) {
       _hover={{ color: "white" }}
       onClick={() => {
         props?.setPlaylist(props.list);
+        console.log(props.list);
       }}
     >
       <a href="">

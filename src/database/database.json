@@ -217,23 +217,16 @@
     },
     {
       "imgURL": "data:image/jpeg;base64,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",
-      "titile": "Test",
-      "desc": "kndak s ndaksn das dnaks daksdn aksdn aksdn aksdnkas nakdn akn dksn.",
-      "createBy": "test@mail.com",
+      "titile": "judul",
+      "desc": "sdasdasdasdadadasdasdadsadadadadadadadad",
+      "createBy": "",
       "list": [
         {
-          "id": "1",
-          "titile": "Hypotheticals",
-          "singer": "Lake Street Dive",
-          "src": "hypo.mp3",
-          "img": "https://upload.wikimedia.org/wikipedia/en/4/49/Lake_Street_Dive_-_Obviously.png"
-        },
-        {
-          "id": "3",
-          "titile": "Crazy Love",
-          "singer": "Michael Buble",
-          "src": "Clove.mp3",
-          "img": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51Bx5SXgRbL._UF1000,1000_QL80_.jpg"
+          "id": "2",
+          "titile": "Chasing Pirates",
+          "singer": "Norah Jones",
+          "src": "chasing.mp3",
+          "img": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/A1h+dibCJWL._UF1000,1000_QL80_.jpg"
         },
         {
           "titile": "Bell Bottom Blues (Live)",
@@ -244,29 +237,6 @@
         }
       ],
       "id": 11
-    },
-    {
-      "imgURL": "asu",
-      "titile": "asu",
-      "desc": "asuuu",
-      "createBy": "",
-      "list": [
-        {
-          "id": "1",
-          "titile": "Hypotheticals",
-          "singer": "Lake Street Dive",
-          "src": "hypo.mp3",
-          "img": "https://upload.wikimedia.org/wikipedia/en/4/49/Lake_Street_Dive_-_Obviously.png"
-        },
-        {
-          "id": "4",
-          "titile": "The Long and Winding Road",
-          "singer": "Will Young",
-          "src": "LWroad.mp3",
-          "img": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT2FOPxcz8MYptppM8ICkOTsaVL0gxARj1jLJLGmS2PBEokS1l_"
-        }
-      ],
-      "id": 12
     }
   ]
 }
